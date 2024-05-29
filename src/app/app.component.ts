@@ -11,5 +11,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './home/home.component.css'
 })
 export class AppComponent {
-  title = 'foodai';
+  title = 'FoodAI';
 }
