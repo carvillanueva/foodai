@@ -1,7 +1,9 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './pages/home/home.component';
+import { RecipeGenerateComponent } from './pages/recipe-generate/recipe-generate.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'generate', component: RecipeGenerateComponent}
     // other routes...
   ];
