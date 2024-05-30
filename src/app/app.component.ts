@@ -7,8 +7,8 @@ import { RouterOutlet } from '@angular/router';
   imports: [RouterOutlet],
   // templateUrl: './app.component.html', // original
   // styleUrl: './app.component.css' // original
-  templateUrl: './pages/home/home.component.html',
-  styleUrl: './pages/home/home.component.css'
+  template: `<router-outlet></router-outlet>`,
+  // styleUrl: '',
 })
 export class AppComponent {
   title = 'FoodAI';
