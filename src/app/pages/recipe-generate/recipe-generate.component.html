@@ -63,4 +63,12 @@
         <button type="button" class="btn btn-outline-secondary" (click)="generateRecipe()">Generate Recipe</button>
       </div>
     </section>
+
+
+
+        <!-- DISPLAY GENERATED RECIPE -->
+    <section *ngIf="generatedRecipeText">
+        <h2>Generated Recipe</h2>
+        <pre>{{ generatedRecipeText }}</pre>
+  </section>
   </section>

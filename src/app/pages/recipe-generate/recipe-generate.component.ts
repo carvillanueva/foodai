@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { OpenAIService } from '../../api/openai/openai.service';
 
 interface RecipeObject {
   mealType: string;
@@ -35,9 +36,9 @@ export class RecipeGenerateComponent {
   public selectedIntolerances: string[] = [];
   public selectedIngredients: string[] = [];
 
+  public generatedRecipeText: string = '';
 
-
-  constructor() {
+  constructor(private openAIService: OpenAIService) {
     // console.log(this.ingredients)
   }
 
@@ -70,8 +71,21 @@ export class RecipeGenerateComponent {
     }
   }
 
-  generateRecipe() {
+  async generateRecipe() {
     console.log('Generate Recipe:', this.recipe);
+
+    const prompt = `You are an AI Chef. Create a recipe with the following details:\n
+    Meal Type: ${this.recipe.mealType}\n
+    Cuisine Type: ${this.recipe.cuisineType}\n
+    Intolerances: ${this.recipe.intolerances.join(', ')}\n
+    Ingredients: ${this.recipe.ingredients.join(', ')}\n`;
+
+    try {
+      const response = await this.openAIService.getResponse(prompt);
+      this.generatedRecipeText = response.choices[0].text;
+    } catch (error) {
+      console.error('Error generating recipe:', error);
+    }
   }
 
   trackByIndex(index: number): number {
