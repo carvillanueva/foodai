@@ -1,10 +1,66 @@
-
 <section class="container">
     <p>recipe-generate works!</p>
 
-    <div *ngFor="let num of ingredients">
-        <p>{{ num }}</p>
-    </div>
+    <!-- MEAL TYPE -->
+    <section>
+      <h2 for="mealType">Meal Type</h2>
+      <div *ngFor="let mealType of mealType; trackBy: trackByIndex" class="d-inline m-2">
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          [class.btn-success]="isSelected(mealType, 'mealType')"
+          (click)="addMealType(mealType)">
+          {{ mealType }}
+        </button>
+      </div>
+    </section>
 
+    <!-- CUISINE TYPE -->
+    <section>
+      <h2 for="cuisineType">Cuisine Type</h2>
+      <div *ngFor="let cuisine of cuisineType; trackBy: trackByIndex" class="d-inline m-2">
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          [class.btn-success]="isSelected(cuisine, 'cuisineType')"
+          (click)="addCuisineType(cuisine)">
+          {{ cuisine }}
+        </button>
+      </div>
+    </section>
 
-</section>
+    <!-- RESTRICTIONS -->
+    <section>
+      <h2 for="restrictions">Restrictions</h2>
+      <div *ngFor="let restrictions of intolerances; trackBy: trackByIndex" class="d-inline m-2">
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          [class.btn-success]="isSelected(restrictions, 'intolerance')"
+          (click)="addIntolerance(restrictions)">
+          {{ restrictions }}
+        </button>
+      </div>
+    </section>
+
+    <!-- INGREDIENTS -->
+    <section>
+      <h2 for="ingredients">Ingredients</h2>
+      <div *ngFor="let ingredient of ingredients; trackBy: trackByIndex" class="d-inline m-2">
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          [class.btn-success]="isSelected(ingredient, 'ingredient')"
+          (click)="addIngredient(ingredient)">
+          {{ ingredient }}
+        </button>
+      </div>
+    </section>
+
+    <!-- GENERATE -->
+    <section>
+      <div class="d-inline m-2">
+        <button type="button" class="btn btn-outline-secondary" (click)="generateRecipe()">Generate Recipe</button>
+      </div>
+    </section>
+  </section>
